@@ -5,8 +5,7 @@ import model.MyModel;
 import view.MyView;
 
 /**
- * The Class Solve gets a maze name
- * and an algorithm and solves the maze.
+ * The Class Solve gets a maze name and solves the maze
  */
 public class Solve extends AbstractCommand implements Command {
 

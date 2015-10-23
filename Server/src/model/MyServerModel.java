@@ -24,11 +24,18 @@ import algorithms.search.Solution;
 import presenter.MazeToSolution;
 import presenter.Properties;
 
+/**
+ * The Class MyServerModel is a concrete class for the MVP architecture.
+ * The class responsible for solving the mazes and sends the command for stopping and starting the server.
+ */
 public class MyServerModel extends Observable implements MyModel {
 	
 	private HashMap<Maze3d,Solution<Position>> cachedMazes;
 	private Properties properties;
 	
+	/**
+	 * Instantiates a new MyServerModel object.
+	 */
 	@SuppressWarnings("unchecked")
 	public MyServerModel() {
 		cachedMazes = new HashMap<Maze3d,Solution<Position>>();
@@ -53,6 +60,9 @@ public class MyServerModel extends Observable implements MyModel {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.MyModel#solveMaze(algorithms.mazeGenerators.Maze3d)
+	 */
 	public void solveMaze(Maze3d maze) {
 		if(!cachedMazes.containsKey(maze)) {	
 			try {
@@ -122,26 +132,44 @@ public class MyServerModel extends Observable implements MyModel {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.MyModel#getProperties()
+	 */
 	@Override
 	public Properties getProperties() {
 		return properties;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.MyModel#stopServer()
+	 */
 	@Override
 	public void stopServer() {
 		this.setChanged();
 		this.notifyObservers("stop");
 	}
 
+	/* (non-Javadoc)
+	 * @see model.MyModel#startServer()
+	 */
 	@Override
-	public void startSever() {
-		
+	public void startServer() {
+		this.setChanged();
+		this.notifyObservers("start");
 	}
 
+	/* (non-Javadoc)
+	 * @see model.MyModel#exit()
+	 */
 	@Override
 	public void exit() {
-		
+		this.setChanged();
+		this.notifyObservers("exit");
 	}
+	
+	/**
+	 * Zip and save the cachedMazes data member in the disk.
+	 */
 	private void zipAndSave(){
 		//Try to zip and save the cached mazes file to the disk.
 		try {
