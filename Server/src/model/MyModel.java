@@ -1,14 +1,14 @@
 package model;
 
 import algorithms.mazeGenerators.Maze3d;
-import algorithms.mazeGenerators.Position;
-import algorithms.search.Solution;
+import presenter.Properties;
 
 public interface MyModel {
 	
-	public Solution<Position> solveMaze(Maze3d maze);
-	public void startSever();
+	public Properties getProperties();
+	public void solveMaze(Maze3d maze);
 	public void stopServer();
+	public void startSever();
 	public void exit();
 
 }

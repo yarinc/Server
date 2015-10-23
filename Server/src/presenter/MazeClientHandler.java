@@ -1,4 +1,4 @@
-package model;
+package presenter;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -6,25 +6,24 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Observable;
 
-import algorithms.mazeGenerators.Maze3d;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 
 public class MazeClientHandler extends Observable implements Runnable {
 	
 	private Socket someClient;
-	private MyModel model;
+	private Object obj;
 	
-	public MazeClientHandler(Socket someClient, MyModel model) { 
+	public MazeClientHandler(Socket someClient, Presenter p) { 
 		this.someClient = someClient;
-		this.model = model;
 	}
 	@Override
 	public void run() {
 		Object obj = extractObject();
 		if(obj != null) {
-			Solution<Position> answer = model.solveMaze((Maze3d)obj);
-			sendSolutionToClient(answer);
+			this.obj = obj;
+			this.setChanged();
+			this.notifyObservers(this.obj);
 		}
 	}
 	private Object extractObject() { 
@@ -48,5 +47,8 @@ public class MazeClientHandler extends Observable implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public Object getObj() {
+		return obj;
 	}
 }

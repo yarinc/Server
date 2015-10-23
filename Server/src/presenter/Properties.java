@@ -5,19 +5,20 @@ import java.io.Serializable;
 public class Properties implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String SolutionAlgorithm;
+	private String solutionAlgorithm;
+	private String cacheMazes;
 	private int numOfClients;
 	private int port;
 	
 	
 	public void setSolutionAlgorithm(String solutionAlgorithm) {
-		SolutionAlgorithm = solutionAlgorithm;
+		this.solutionAlgorithm = solutionAlgorithm;
 	}
 	public void setNumOfClients(int numOfClients) {
 		this.numOfClients = numOfClients;
 	}
 	public String getSolutionAlgorithm() {
-		return SolutionAlgorithm;
+		return solutionAlgorithm;
 	}
 	public int getNumOfClients() { 
 		return numOfClients;
@@ -27,5 +28,11 @@ public class Properties implements Serializable {
 	}
 	public void setPort(int port) { 
 		this.port = port;
+	}
+	public String getCacheMazes() {
+		return cacheMazes;
+	}
+	public void setCacheMazes(String cacheMazes) {
+		this.cacheMazes = cacheMazes;
 	}
 }
