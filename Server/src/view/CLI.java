@@ -23,7 +23,7 @@ public class CLI implements Runnable {
 	
 	/**
 	 * Sets the view.
-	 * @param view the new view
+	 * @param ui the new user interface
 	 */
 	public void setView(MyView ui) { 
 		this.ui = ui;
