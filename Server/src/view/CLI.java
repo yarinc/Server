@@ -47,13 +47,6 @@ public class CLI implements Runnable {
 		this.out = out;
 	}
 	
-	/**
-	 * Start the new thread.
-	 */
-	public void start() { 
-		new Thread(this).start();
-	}
-	
 	/* (non-Javadoc)
 	 * @see java.lang.Runnable#run()
 	 */

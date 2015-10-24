@@ -85,7 +85,7 @@ public class Presenter implements Observer {
 		//If it's a string, find the relevant action.
 		if(obj instanceof String) { 
 			switch ((String)obj) {
-			case "start" : server.startServer(model.getProperties().getNumOfClients());
+			case "start" : if(!server.isOn()) { new Thread(server).start(); }
 				break;
 			case "stop" : server.stopServer();
 				break;

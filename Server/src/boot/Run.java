@@ -20,9 +20,9 @@ public class Run {
 		Presenter p = new Presenter(m,ui);
 		ui.addObserver(p);
 		m.addObserver(p);
-		MyTCPIPServer server = new MyTCPIPServer(m.getProperties().getPort(), p);
+		MyTCPIPServer server = new MyTCPIPServer(m.getProperties().getPort(), p, m.getProperties().getNumOfClients());
 		p.setServer(server);
 		ui.start();
-		server.startServer(m.getProperties().getNumOfClients());
+		new Thread(server).start();
 	}
 }

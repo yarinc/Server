@@ -12,12 +12,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * The Class MyTCPIPServer responsible for listening for request from the client and forward them.
  */
-public class MyTCPIPServer {
+public class MyTCPIPServer implements Runnable {
 	
 	private int port;
 	private Executor executer;
 	private ServerSocket server;
 	private boolean isOn = false;
+	private int numOfClients;
 	private Presenter p;
 	
 	/**
@@ -25,16 +26,18 @@ public class MyTCPIPServer {
 	 * @param port the port to listen
 	 * @param p the presenter
 	 */
-	public MyTCPIPServer(int port, Presenter p){
+	public MyTCPIPServer(int port, Presenter p, int numOfClients){
 		this.port = port;
 		this.p = p;
+		this.numOfClients = numOfClients;
 	}
 
 	/**
 	 * Start server functionality
 	 * @param numOfClients the maximum number of clients to serve at the same time.
 	 */
-	public void startServer(int numOfClients){
+	@Override
+	public void run(){
 		//Set flag to on and print a message.
 		isOn = true;
 		p.print("The Server is now up and waiting for connections.");
@@ -105,4 +108,5 @@ public class MyTCPIPServer {
 	public boolean isOn() { 
 		return isOn;
 	}
+
 }
