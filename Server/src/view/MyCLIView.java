@@ -22,7 +22,7 @@ public class MyCLIView extends Observable implements MyView {
 	 */
 	@Override
 	public void start() {
-		 new Thread(cli).start();
+		cli.start();
 	}
 
 	/* (non-Javadoc)

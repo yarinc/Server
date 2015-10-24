@@ -22,7 +22,7 @@ public class MazeClientHandler extends Observable implements Runnable {
 	 * @param someClient the client
 	 * @param p the presenter
 	 */
-	public MazeClientHandler(Socket someClient, Presenter p) { 
+	public MazeClientHandler(Socket someClient) { 
 		this.someClient = someClient;
 	}
 	

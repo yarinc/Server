@@ -49,9 +49,9 @@ public class MyTCPIPServer {
 				Socket someClient = server.accept();
 				p.print("The client " + someClient.getInetAddress().toString().substring(1) + " is now connected");
 				//Create a MazeClientHandler and add the presenter as observer.
-				MazeClientHandler client = new MazeClientHandler(someClient,p);
+				MazeClientHandler client = new MazeClientHandler(someClient);
 				client.addObserver(p);
-				//Run the client at a diffrent thread in the thread pool.
+				//Run the client at a different thread in the thread pool.
 				executer.execute(new Thread(client));
 			}
 		} catch (SocketException e) {
